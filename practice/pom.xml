@@ -57,6 +57,12 @@
 		  <scope>runtime</scope>
 		  <optional>true</optional>
 		</dependency>
+		<!-- Lombok アノテーションでgetter,setter,toStringなどを実装してくれる機能 -->
+		<dependency>
+		    <groupId>org.projectlombok</groupId>
+		    <artifactId>lombok</artifactId>
+		    <scope>provided</scope>
+		</dependency>
 	</dependencies>
 
 	<build>
