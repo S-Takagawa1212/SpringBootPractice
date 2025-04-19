@@ -1,32 +1,61 @@
 package com.example.demo.controller;
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.servlet.ModelAndView;
 
-import com.example.demo.data.ContactData;
+import com.example.demo.form.ContactForm;
 
 @Controller
 public class ContactController {
 	
-	@PostMapping("/contact")
-	public ModelAndView contact(@ModelAttribute ContactData contactData,
-		                     	ModelAndView mv ) {
-		// 使用するViewのtemplate名を指定
-	    mv.setViewName("confirmation");
-
-	    // templateで表示する要素のキーと値を指定
-	    mv.addObject("lastName", contactData.getLastName());
-	    mv.addObject("firstName", contactData.getFirstName());
-	    mv.addObject("email", contactData.getEmail());
-	    mv.addObject("phone", contactData.getPhone());
-	    mv.addObject("zipCode", contactData.getZipCode());
-	    mv.addObject("address", contactData.getAddress());
-	    mv.addObject("buildingName",contactData.getBuildingName());
-	    mv.addObject("contactType", contactData.getContactType());
-	    mv.addObject("body", contactData.getBody());
+	@GetMapping("/contact")
+	public String contact(Model model) {
+		model.addAttribute("contactForm",new ContactForm());
 		
-		return mv;
+		return "contact";
 	}
+	
+	
+	@PostMapping("/contact")
+	public String contact(@Validated @ModelAttribute ContactForm contactForm, BindingResult result, HttpServletRequest request 
+		                     	) {
+		if (result.hasErrors()) {
+			return "contact";
+		}
+		
+		// sessionにcontactaFormオブジェクトをcontactFormというタグで登録。
+		HttpSession session =request.getSession();
+		session.setAttribute("contactForm", contactForm);
+		
+		
+		return "redirect:/contact/confirm";
+	}
+	
+		@GetMapping("/contact/confirm")
+		public String confirm(Model model, HttpServletRequest request) {
+			
+			HttpSession session = request.getSession();
+			
+			ContactForm contactForm = (ContactForm) session.getAttribute("contactForm");
+			
+		    // nullチェックを追加
+		    if (contactForm == null) {
+		        // セッションが切れたか、データがない場合はフォーム画面に戻す
+		        return "redirect:/contact";
+		    }
+			
+			model.addAttribute("contactForm", contactForm);
+			// session.removeAttribute("contactForm");
+			
+			return "confirmation";
+		}
+		
 }
