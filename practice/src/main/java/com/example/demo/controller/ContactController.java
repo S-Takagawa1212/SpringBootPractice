@@ -11,10 +11,19 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.example.demo.entity.Contact;
 import com.example.demo.form.ContactForm;
+import com.example.demo.repository.ContactRepository;
+
+import lombok.RequiredArgsConstructor;
+
 
 @Controller
+@RequiredArgsConstructor
 public class ContactController {
+	
+	// @RequireArgsConstructorでインスタンスの単一性を確保
+	private final ContactRepository contactRepository;
 	
 	@GetMapping("/contact")
 	public String contact(Model model) {
@@ -53,9 +62,51 @@ public class ContactController {
 		    }
 			
 			model.addAttribute("contactForm", contactForm);
+			// FIXME　本当は以下のコードでセッションを閉じたいが、こうするとなぜかエラーがでる。
 			// session.removeAttribute("contactForm");
 			
 			return "confirmation";
 		}
 		
+	@GetMapping("contact/register")
+	public String register(Model model, HttpServletRequest request) {
+		
+		HttpSession session = request.getSession();
+		ContactForm contactForm = (ContactForm) session.getAttribute("contactForm");
+		
+        Contact contact = new Contact();
+        contact.setLastName(contactForm.getLastName());
+        contact.setFirstName(contactForm.getFirstName());
+        contact.setEmail(contactForm.getEmail());
+        contact.setPhone(contactForm.getPhone());
+        contact.setZipCode(contactForm.getZipCode());
+        contact.setAddress(contactForm.getAddress());
+        contact.setBuildingName(contactForm.getBuildingName());
+        contact.setContactType(contactForm.getContactType());
+        contact.setBody(contactForm.getBody());
+
+        contactRepository.save(contact);
+		
+		return "redirect:/contact/complete";
+	}
+	
+	   @GetMapping("/contact/complete")
+	    public String complete(Model model, HttpServletRequest request) {
+		   	
+		    // request.getSession()はsessionを新規作成するのでfalseを引数に用いる。
+	        if (request.getSession(false) == null) {
+	          return "redirect:/contact";
+	        }
+
+	        HttpSession session = request.getSession();
+	        ContactForm contactForm = (ContactForm) session.getAttribute("contactForm");
+	        model.addAttribute("contactForm", contactForm);
+
+	        // 現在のsessionを無効化する
+	        session.invalidate();
+
+	        return "completion";
+	    }
+	
+	
 }
