@@ -43,7 +43,7 @@ import lombok.Data;
     	@Column(name = "contactType", nullable = false)
     	private String contactType;
     	
-    	@Column(name = "bod", nullable = false)
+    	@Column(name = "body", nullable = false)
     	private String body;
  
 

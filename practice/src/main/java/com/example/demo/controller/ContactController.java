@@ -68,7 +68,7 @@ public class ContactController {
 			return "confirmation";
 		}
 		
-	@GetMapping("contact/register")
+	@PostMapping("contact/register")
 	public String register(Model model, HttpServletRequest request) {
 		
 		HttpSession session = request.getSession();
@@ -98,6 +98,7 @@ public class ContactController {
 	          return "redirect:/contact";
 	        }
 
+	        // modelにcotactFormの内容を保存
 	        HttpSession session = request.getSession();
 	        ContactForm contactForm = (ContactForm) session.getAttribute("contactForm");
 	        model.addAttribute("contactForm", contactForm);
