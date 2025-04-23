@@ -56,3 +56,27 @@ build/
 
 ### VS Code ###
 .vscode/*
+
+# Eclipse workspace metadata (不要・環境依存)
+.metadata/
+*.prefs
+*.lock
+*.tmp
+*.bak
+*.swp
+
+# Tomcat server config
+Servers/
+
+# その他、特定のIDEやEclipseプラグインが生成するファイル
+*.launch
+*.log
+*.orig
+*.rej
+
+
+.DS_Store
+.metadata/
+Servers/
+mysql/
+practice/src/main/resources/application-dev.properties
