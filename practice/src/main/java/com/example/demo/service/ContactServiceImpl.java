@@ -11,12 +11,12 @@ import lombok.RequiredArgsConstructor;
 @Service
 @RequiredArgsConstructor
 public class ContactServiceImpl implements ContactService {
-	
-	private final ContactRepository contactRepository;
 
-	@Override
-	public void saveContact(ContactForm contactForm) {
-		// TODO 自動生成されたメソッド・スタブ
+    private final ContactRepository contactRepository;
+
+    @Override
+    public void saveContact(ContactForm contactForm) {
+        // TODO 自動生成されたメソッド・スタブ
         Contact contact = new Contact();
         contact.setLastName(contactForm.getLastName());
         contact.setFirstName(contactForm.getFirstName());
@@ -29,6 +29,6 @@ public class ContactServiceImpl implements ContactService {
         contact.setBody(contactForm.getBody());
 
         contactRepository.save(contact);
-	}
+    }
 
 }
