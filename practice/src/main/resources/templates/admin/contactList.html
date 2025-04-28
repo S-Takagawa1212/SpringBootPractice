@@ -21,14 +21,22 @@
           <th>お問い合わせ種別</th>
           <th>作成日時</th>
           <th>更新日時</th>
+          <th></th>
         </tr>
         <tr th:each="contact: ${contactDataForAdmin}">
-          <th th:text="${contact.id}"></th>
-          <th th:text="${contact.lastName}"></th>
-          <th th:text="${contact.firstName}"></th>
-          <th th:text="${contact.contactType}"></th>
-          <th th:text="${contact.createdAt}"></th>
-          <th th:text="${contact.updatedAt}"></th>
+          <td th:text="${contact.id}"></td>
+          <td th:text="${contact.lastName}"></td>
+          <td th:text="${contact.firstName}"></td>
+          <td th:text="${contact.contactType}"></td>
+          <td th:text="${contact.createdAt}"></td>
+          <td th:text="${contact.updatedAt}"></td>
+          <td>
+            <a
+              class="btn btn-primary"
+              th:href="@{/admin/contacts/{id}(id=${contact.id})}"
+              >詳細
+            </a>
+          </td>
         </tr>
       </table>
     </div>
