@@ -2,6 +2,8 @@ package com.example.demo.common.data;
 
 import lombok.Data;
 
+
+// FormとEntityの間を中継させるDTO
 @Data
 public class ContactData {
     private String lastName;
