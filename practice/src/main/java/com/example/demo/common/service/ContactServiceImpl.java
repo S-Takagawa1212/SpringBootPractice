@@ -17,8 +17,8 @@ public class ContactServiceImpl implements ContactService {
     @Override
     public void saveContact(ContactForm contactForm) {
         // 複数のService間で共通仕様のDTOとしてcontactを用いている
-    	// entityから取得した内部データを外部に出す時に、内部での保存形式のまま出さないためのラッパー
-    	// 以下の場合は、Formからの入力をentityの形式に合わせるためのラッパー
+        // entityから取得した内部データを外部に出す時に、内部での保存形式のまま出さないためのラッパー
+        // 以下の場合は、Formからの入力をentityの形式に合わせるためのラッパー
         Contact contact = new Contact();
         contact.setLastName(contactForm.getLastName());
         contact.setFirstName(contactForm.getFirstName());

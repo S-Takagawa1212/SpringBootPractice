@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.example.demo.common.service.ContactService;
 import com.example.demo.contact.form.ContactForm;
-import com.example.demo.contact.service.ContactService;
 
 import lombok.RequiredArgsConstructor;
 
