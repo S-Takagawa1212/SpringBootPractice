@@ -10,24 +10,27 @@
     <title>管理者用contact一覧ページ</title>
   </head>
   <body>
-    <h2>お問い合わせ一覧</h2>
-    <table class="table table-bordered table-hover" style="cursor: pointer">
-      <tr>
-        <th>ID</th>
-        <th>姓</th>
-        <th>名</th>
-        <th>お問い合わせ種別</th>
-        <th>作成日時</th>
-        <th>更新日時</th>
-      </tr>
-      <tr th:each="contact: ${contactDataForAdmin}">
-        <th th:text="${contact.id}"></th>
-        <th th:text="${contact.lastName}"></th>
-        <th th:text="${contact.firstName}"></th>
-        <th th:text="${contact.contactType}"></th>
-        <th th:text="${contact.createdAt}"></th>
-        <th th:text="${contact.updatedAt}"></th>
-      </tr>
-    </table>
+    <div class="container">
+      <h2>お問い合わせ一覧</h2>
+
+      <table class="table table-bordered table-hover" style="cursor: pointer">
+        <tr>
+          <th>ID</th>
+          <th>姓</th>
+          <th>名</th>
+          <th>お問い合わせ種別</th>
+          <th>作成日時</th>
+          <th>更新日時</th>
+        </tr>
+        <tr th:each="contact: ${contactDataForAdmin}">
+          <th th:text="${contact.id}"></th>
+          <th th:text="${contact.lastName}"></th>
+          <th th:text="${contact.firstName}"></th>
+          <th th:text="${contact.contactType}"></th>
+          <th th:text="${contact.createdAt}"></th>
+          <th th:text="${contact.updatedAt}"></th>
+        </tr>
+      </table>
+    </div>
   </body>
 </html>
