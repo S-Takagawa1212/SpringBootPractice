@@ -16,10 +16,10 @@ public class AdminServiceImpl implements AdminService {
 
     @Override
     public List<ContactDataForAdmin> getAllContact() {
-        // repositoryからデータを全件取得
+        // 一覧画面表示に必要なデータを取得するため、一旦repositoryからデータを全件取得する
         List<Contact> contactList = repository.findAll();
 
-        // DTOであるcontactdataForAdminのリストとして結果を返却する
+        // 画面表示に必要な項目のDTOであるcontactdataForAdminのリストとして結果を返却する
         List<ContactDataForAdmin> results = new ArrayList<>();
 
         for (Contact result : contactList) {
