@@ -3,6 +3,7 @@ package com.example.demo.common.data;
 import lombok.Data;
 
 // FormとEntityの間を中継させる
+// はずのクラスだが使われていない。消してもいいと思う。
 @Data
 public class ContactData {
     private String lastName;
