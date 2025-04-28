@@ -27,6 +27,7 @@ public class AdminController {
     public String showContactsDeteil(@PathVariable("id") Long id, Model model) {
 
         // TODO idをkeyにしてDBから情報を取得して、それをmodelに格納する
+        model.addAttribute("contactDataDetailForAdmin", adminService.getContactById(id));
 
         return "admin/contactDetail";
     }
