@@ -7,7 +7,7 @@ import lombok.Data;
 @Data
 public class ContactDataForAdmin {
 
-    private Integer id;
+    private Long id;
     private String lastName;
     private String firstName;
     private String contactType;
