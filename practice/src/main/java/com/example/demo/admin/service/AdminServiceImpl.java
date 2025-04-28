@@ -3,12 +3,15 @@ package com.example.demo.admin.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.example.demo.admin.data.ContactDataForAdmin;
 import com.example.demo.common.entity.Contact;
 import com.example.demo.common.repository.ContactRepository;
 
 import lombok.RequiredArgsConstructor;
 
+@Service
 @RequiredArgsConstructor
 public class AdminServiceImpl implements AdminService {
 
