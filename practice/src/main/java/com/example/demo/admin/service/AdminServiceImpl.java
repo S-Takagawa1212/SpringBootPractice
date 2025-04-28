@@ -1,9 +1,9 @@
-package com.example.demo.admin.data;
+package com.example.demo.admin.service;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.example.demo.admin.service.AdminService;
+import com.example.demo.admin.data.ContactDataForAdmin;
 import com.example.demo.common.entity.Contact;
 import com.example.demo.common.repository.ContactRepository;
 
