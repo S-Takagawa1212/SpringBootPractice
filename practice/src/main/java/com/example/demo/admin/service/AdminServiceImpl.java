@@ -2,9 +2,11 @@ package com.example.demo.admin.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
+import com.example.demo.admin.data.ContactDataDetailForAdmin;
 import com.example.demo.admin.data.ContactDataForAdmin;
 import com.example.demo.common.entity.Contact;
 import com.example.demo.common.repository.ContactRepository;
@@ -41,6 +43,33 @@ public class AdminServiceImpl implements AdminService {
         }
 
         return results;
+    }
+
+    @Override
+    public ContactDataDetailForAdmin getContactById(Long id) {
+
+        // 詳細画面用にidの値からデータを1件取得する。
+        Optional<Contact> optionalResult = repository.findById(id);
+
+        // idが不正な場合の例外スロー
+        Contact resultBeforeDto = optionalResult.orElseThrow(() -> new IllegalArgumentException("idの値が不正です。"));
+
+        //TODO DTO側に@allArgsConstructorと@NoargsConstructorをつけて、インスタンス化する時の引数にgetXXXを渡して記述を簡略化できる
+        ContactDataDetailForAdmin result = new ContactDataDetailForAdmin();
+
+        result.setId(resultBeforeDto.getId());
+        result.setFirstName(resultBeforeDto.getFirstName());
+        result.setLastName(resultBeforeDto.getLastName());
+        result.setEmail(resultBeforeDto.getEmail());
+        result.setZipCode(resultBeforeDto.getZipCode());
+        result.setAddress(resultBeforeDto.getAddress());
+        result.setBuildingName(resultBeforeDto.getBuildingName());
+        result.setContactType(resultBeforeDto.getContactType());
+        result.setBody(resultBeforeDto.getBody());
+        result.setCreatedAt(resultBeforeDto.getCreatedAt());
+        result.setUpdatedAt(resultBeforeDto.getUpdatedAt());
+
+        return result;
     }
 
 }
