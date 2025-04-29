@@ -91,4 +91,16 @@ public class AdminServiceImpl implements AdminService {
         repository.save(contact);
     }
 
+    @Override
+    public void deleteContact(Long id) {
+
+        // 削除予定のidの値からデータを1件取得する。存在の確認。
+        Optional<Contact> optionalContact = repository.findById(id);
+
+        // idが不正な場合の例外スロー
+        optionalContact.orElseThrow(() -> new IllegalArgumentException("idの値が不正です。"));
+
+        repository.deleteById(id);
+    }
+
 }

@@ -13,4 +13,6 @@ public interface AdminService {
     ContactDataDetailForAdmin getContactById(Long id);
 
     void updateContact(Long id, ContactForm form);
+
+    void deleteContact(Long id);
 }
