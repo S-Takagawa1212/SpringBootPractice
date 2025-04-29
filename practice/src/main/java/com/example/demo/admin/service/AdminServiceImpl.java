@@ -61,6 +61,7 @@ public class AdminServiceImpl implements AdminService {
         result.setFirstName(resultBeforeDto.getFirstName());
         result.setLastName(resultBeforeDto.getLastName());
         result.setEmail(resultBeforeDto.getEmail());
+        result.setPhone(resultBeforeDto.getPhone());
         result.setZipCode(resultBeforeDto.getZipCode());
         result.setAddress(resultBeforeDto.getAddress());
         result.setBuildingName(resultBeforeDto.getBuildingName());
