@@ -1,5 +1,7 @@
 package com.example.demo.admin.controller;
 
+import java.time.LocalDateTime;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -46,10 +48,11 @@ public class AdminController {
 
     @PostMapping("admin/contacts/{id}/edit")
     public String editContact(@ModelAttribute ContactForm form, @PathVariable Long id) {
-        //TODO:DBのデータを上書きする
-        System.out.println("データを上書きしたってばよ！");
+        //DBのデータを上書きする
+        adminService.updateContact(id, form);
+        System.out.println(LocalDateTime.now() + "に、ID:" + id + "のデータを上書きしたってばよ！");
         // TODO 上書きしました、という表示と変更後のデータが入力されたhtmlを表示させる
-        return "redirect:/admin/contacts";
+        return "redirect:/admin/contacts/{id}";
     }
 
 }
