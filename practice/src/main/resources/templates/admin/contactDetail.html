@@ -44,9 +44,35 @@
         </tr>
       </table>
       <div class="d-flex justify-content-center align-items-center">
-        <a class="btn btn-primary m-2" role="button" href="">編集する</a>
-        <a class="btn btn-danger" role="button" href="">削除する</a>
+        <a
+          class="btn btn-secondary me-2"
+          role="button"
+          th:href="@{/admin/contacts}"
+        >
+          一覧に戻る
+        </a>
+        <a class="btn btn-primary me-2" role="button" href="">編集する</a>
+        <!-- TODO 実装時にmethodをpostにする -->
+        <form th:action="@{/admin/contacts}" method="get">
+          <button
+            type="submit"
+            class="btn btn-danger"
+            onclick="return confirmDelete()"
+          >
+            削除する
+          </button>
+        </form>
       </div>
     </div>
+    <script>
+      function confirmDelete() {
+        if (confirm("本当に削除しますか？")) {
+          alert("削除しました");
+        } else {
+          alert("削除をキャンセルしました");
+          return false;
+        }
+      }
+    </script>
   </body>
 </html>
