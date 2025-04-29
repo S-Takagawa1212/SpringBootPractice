@@ -62,8 +62,10 @@
           th:href="@{/admin/contacts/{id}/edit(id=${contactDataDetailForAdmin.id})}"
           >編集する</a
         >
-        <!-- TODO 実装時にmethodをpostにする -->
-        <form th:action="@{/admin/contacts}" method="get">
+        <form
+          th:action="@{/admin/contacts/{id}/delete(id=${contactDataDetailForAdmin.id})}"
+          method="post"
+        >
           <button
             type="submit"
             class="btn btn-danger"

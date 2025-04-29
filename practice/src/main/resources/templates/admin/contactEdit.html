@@ -135,8 +135,10 @@
         />
       </form>
       <div class="d-flex justify-content-center align-items-center">
-        <!-- todo getをpostに変更 -->
-        <form th:action="@{/admin/contacts}" method="get">
+        <form
+          th:action="@{/admin/contacts/{id}/delete(id=${contactDataDetailForAdmin.id})}"
+          method="post"
+        >
           <button
             type="submit"
             class="btn btn-danger"
