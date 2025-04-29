@@ -56,7 +56,12 @@
         >
           一覧に戻る
         </a>
-        <a class="btn btn-primary me-2" role="button" href="">編集する</a>
+        <a
+          class="btn btn-primary me-2"
+          role="button"
+          th:href="@{/admin/contacts/{id}/edit(id=${contactDataDetailForAdmin.id})}"
+          >編集する</a
+        >
         <!-- TODO 実装時にmethodをpostにする -->
         <form th:action="@{/admin/contacts}" method="get">
           <button
