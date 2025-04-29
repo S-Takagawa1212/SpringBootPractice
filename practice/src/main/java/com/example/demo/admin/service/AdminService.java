@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.example.demo.admin.data.ContactDataDetailForAdmin;
 import com.example.demo.admin.data.ContactDataForAdmin;
+import com.example.demo.contact.form.ContactForm;
 
 public interface AdminService {
 
@@ -11,4 +12,5 @@ public interface AdminService {
 
     ContactDataDetailForAdmin getContactById(Long id);
 
+    void updateContact(Long id, ContactForm form);
 }

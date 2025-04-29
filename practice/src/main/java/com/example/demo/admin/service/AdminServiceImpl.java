@@ -4,12 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.admin.data.ContactDataDetailForAdmin;
 import com.example.demo.admin.data.ContactDataForAdmin;
 import com.example.demo.common.entity.Contact;
 import com.example.demo.common.repository.ContactRepository;
+import com.example.demo.contact.form.ContactForm;
 
 import lombok.RequiredArgsConstructor;
 
@@ -71,6 +73,19 @@ public class AdminServiceImpl implements AdminService {
         result.setUpdatedAt(resultBeforeDto.getUpdatedAt());
 
         return result;
+    }
+
+    @Override
+    public void updateContact(Long id, ContactForm form) {
+
+        Contact contact = new Contact();
+        contact.setId(id);
+        // data ⊇ form のとき、formが持っているプロパティ名と一致する値だけを
+        // dataにコピーする。
+        BeanUtils.copyProperties(form, contact);
+
+        // repositoryのメソッドはEntityしか受け取れない
+        repository.save(contact);
     }
 
 }
