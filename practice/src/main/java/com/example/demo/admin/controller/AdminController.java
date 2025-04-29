@@ -26,10 +26,19 @@ public class AdminController {
     @GetMapping("admin/contacts/{id}")
     public String showContactsDeteil(@PathVariable("id") Long id, Model model) {
 
-        // TODO idをkeyにしてDBから情報を取得して、それをmodelに格納する
+        // idをkeyにしてDBから情報を取得して、それをmodelに格納する
         model.addAttribute("contactDataDetailForAdmin", adminService.getContactById(id));
 
         return "admin/contactDetail";
+    }
+
+    @GetMapping("admin/contacts/{id}/edit")
+    public String showContactEdit(@PathVariable("id") Long id, Model model) {
+
+        // idをkeyにしてDBから情報を取得して、それをmodelに格納する
+        model.addAttribute("contactDataDetailForAdmin", adminService.getContactById(id));
+
+        return "admin/contactEdit";
     }
 
 }
