@@ -78,10 +78,13 @@ public class AdminServiceImpl implements AdminService {
     @Override
     public void updateContact(Long id, ContactForm form) {
 
-        Contact contact = new Contact();
-        contact.setId(id);
-        // data ⊇ form のとき、formが持っているプロパティ名と一致する値だけを
-        // dataにコピーする。
+        // 更新用にidの値からデータを1件取得する。
+        Optional<Contact> optionalContact = repository.findById(id);
+
+        // idが不正な場合の例外スロー
+        Contact contact = optionalContact.orElseThrow(() -> new IllegalArgumentException("idの値が不正です。"));
+
+        // data ⊇ form のとき、formが持っているプロパティ名と一致する値だけをdataにコピーする。
         BeanUtils.copyProperties(form, contact);
 
         // repositoryのメソッドはEntityしか受け取れない
