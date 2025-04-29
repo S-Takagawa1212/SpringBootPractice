@@ -48,11 +48,26 @@ public class AdminController {
 
     @PostMapping("admin/contacts/{id}/edit")
     public String editContact(@ModelAttribute ContactForm form, @PathVariable Long id) {
-        //DBのデータを上書きする
+
+        // DBのデータを上書きする
         adminService.updateContact(id, form);
+
+        // 更新日時をconsoleに出力
         System.out.println(LocalDateTime.now() + "に、ID:" + id + "のデータを上書きしたってばよ！");
-        // TODO 上書きしました、という表示と変更後のデータが入力されたhtmlを表示させる
+
+        // TODO 上書きしました、という表示と変更後のデータが入力されたhtmlを表示させるべきかも
         return "redirect:/admin/contacts/{id}";
+    }
+
+    @PostMapping("admin/contacts/{id}/delete")
+    public String deleteContact(@PathVariable Long id) {
+
+        adminService.deleteContact(id);
+
+        // 削除日時をconsoleに出力
+        System.out.println(LocalDateTime.now() + "に、ID:" + id + "のデータを削除したってばよ！");
+
+        return "redirect:/admin/contacts";
     }
 
 }
