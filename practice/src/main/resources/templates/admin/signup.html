@@ -13,6 +13,7 @@
   </head>
   <body>
     <div class="container">
+      <h2 class="mt-2">管理者登録用ページ</h2>
       <form
         th:action="@{/admin/signup}"
         th:object="${registAdminUserForm}"
@@ -64,7 +65,7 @@
             </td>
           </tr>
         </table>
-        <input type="submit" value="登録する" />
+        <input type="submit" class="btn btn-primary" value="登録する" />
       </form>
     </div>
   </body>
