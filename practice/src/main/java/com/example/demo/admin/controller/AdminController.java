@@ -4,7 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.example.demo.admin.service.AdminService;
+import com.example.demo.common.service.ContactService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -12,12 +12,12 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class AdminController {
 
-    private final AdminService adminService;
+    private final ContactService contactService;
 
     @GetMapping("/admin/contacts")
     public String showContacts(Model model) {
 
-        model.addAttribute("contactDataForAdmin", adminService.getAllContact());
+        model.addAttribute("contactDataForAdmin", contactService.getAllContact());
 
         return "admin/contactList";
     }
