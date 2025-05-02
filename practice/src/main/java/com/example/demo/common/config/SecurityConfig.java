@@ -7,8 +7,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @Configuration
 public class SecurityConfig {
 
+    // TODO 最終課題04でSpringSecurity導入時にsecurityコンポーネントを作る際に移設する予定
     @Bean
-    public BCryptPasswordEncoder passwordEncoder() {
+    BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
