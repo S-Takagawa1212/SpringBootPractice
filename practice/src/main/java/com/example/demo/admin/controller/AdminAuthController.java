@@ -40,4 +40,11 @@ public class AdminAuthController {
         return "redirect:/admin/contacts";
     }
 
+    @GetMapping("/admin/signin")
+    public String showSignIn(Model model) {
+        // TODO SigninAdminUserFormを実装したらコメントを外す。
+        // model.addAttribute("signinAdminUserForm", new SigninAdminUserForm());
+        return "admin/signin";
+    }
+
 }
