@@ -2,6 +2,7 @@ package com.example.demo.admin.service;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.example.demo.admin.data.AdminUserData;
 import com.example.demo.admin.entity.AdminUser;
@@ -12,6 +13,7 @@ import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class AdminUserServiceImpl implements AdminUserService {
     private final AdminUserRepository repository;
     private final BCryptPasswordEncoder passwordEncoder;
@@ -41,7 +43,7 @@ public class AdminUserServiceImpl implements AdminUserService {
 
     private AdminUser mapDataToEntity(AdminUserData data) {
         // ここでデータ詰め替え時にpasswordを暗号化したい
-        return new AdminUser(
+        AdminUser adminUser = new AdminUser(
                 data.getId(),
                 data.getLastName(),
                 data.getFirstName(),
@@ -50,6 +52,8 @@ public class AdminUserServiceImpl implements AdminUserService {
                 data.getCurrentSignInAt(),
                 data.getCreatedAt(),
                 data.getUpdatedAt());
+
+        return adminUser;
     }
 
 }
