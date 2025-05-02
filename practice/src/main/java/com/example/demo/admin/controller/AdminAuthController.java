@@ -47,4 +47,17 @@ public class AdminAuthController {
         return "admin/signin";
     }
 
+    @PostMapping("/admin/signin")
+    public String signInAdminUser(@Validated @ModelAttribute signInAdminUserForm signAdminUserForm,
+            BindingResult result, Model model) {
+
+        // formのバリデーションに引っ掛かったらsignup画面に遷移
+        if (result.hasErrors()) {
+            return "admin/sinin";
+        }
+
+        // TODO 遷移先は後で決定する
+        return "redirect:/admin/contcts";
+    }
+
 }
