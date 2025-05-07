@@ -18,9 +18,11 @@ public class UpdateContactForm implements Serializable {
     private Long id;
 
     @NotBlank
+    @Pattern(regexp = ".*[^　].*", message = "全角空白のみの入力はできません")
     private String lastName;
 
     @NotBlank
+    @Pattern(regexp = ".*[^　].*", message = "全角空白のみの入力はできません")
     private String firstName;
 
     @NotBlank
@@ -29,6 +31,7 @@ public class UpdateContactForm implements Serializable {
 
     @NotBlank
     @Size(min = 10, max = 11)
+    @Pattern(regexp = "[0-9]{10,11}", message = "ハイフンなしの半角数字で入力してください。")
     private String phone;
 
     @NotBlank
@@ -36,14 +39,18 @@ public class UpdateContactForm implements Serializable {
     private String zipCode;
 
     @NotBlank
+    @Pattern(regexp = ".*[^　].*", message = "全角空白のみの入力はできません")
     private String address;
 
     @NotBlank
+    @Pattern(regexp = ".*[^　].*", message = "全角空白のみの入力はできません")
     private String buildingName;
 
     @NotEmpty
+    @Pattern(regexp = ".*[^　].*", message = "全角空白のみの入力はできません")
     private String contactType;
 
     @NotBlank
+    @Pattern(regexp = ".*[^　].*", message = "全角空白のみの入力はできません")
     private String body;
 }
