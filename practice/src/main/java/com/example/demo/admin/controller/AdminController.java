@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -48,10 +49,12 @@ public class AdminController {
     }
 
     @PostMapping("admin/contacts/{id}/edit")
-    public String editContact(@ModelAttribute UpdateContactForm form, BindingResult result, @PathVariable Long id) {
+    public String editContact(@Validated @ModelAttribute("contactDataDetailForAdmin") UpdateContactForm form,
+            BindingResult result,
+            @PathVariable Long id) {
 
         if (result.hasErrors()) {
-            return "admin/contactsEdit";
+            return "admin/contactEdit";
         }
 
         // DBのデータを上書きする
