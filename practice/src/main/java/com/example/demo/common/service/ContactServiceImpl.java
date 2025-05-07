@@ -9,10 +9,10 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.admin.data.ContactDataDetailForAdmin;
 import com.example.demo.admin.data.ContactDataForAdmin;
-import com.example.demo.admin.form.UpdateContactForm;
 import com.example.demo.common.entity.Contact;
 import com.example.demo.common.repository.ContactRepository;
 import com.example.demo.contact.form.CreateContactForm;
+import com.example.demo.contact.form.UpdateContactForm;
 
 import lombok.RequiredArgsConstructor;
 
