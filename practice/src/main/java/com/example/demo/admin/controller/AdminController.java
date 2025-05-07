@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.demo.common.service.ContactService;
+import com.example.demo.contact.form.ContactForm;
 
 import lombok.RequiredArgsConstructor;
 
@@ -52,7 +53,7 @@ public class AdminController {
         contactService.updateContact(id, form);
 
         // 更新日時をconsoleに出力
-        System.out.println(LocalDateTime.now() + "に、ID:" + id + "のデータを上書きしたってばよ！");
+        System.out.println(LocalDateTime.now() + "に、ID:" + id + "のデータを上書きしました。");
 
         // TODO 上書きしました、という表示と変更後のデータが入力されたhtmlを表示させるべきかも
         return "redirect:/admin/contacts/{id}";
@@ -64,7 +65,7 @@ public class AdminController {
         contactService.deleteContact(id);
 
         // 削除日時をconsoleに出力
-        System.out.println(LocalDateTime.now() + "に、ID:" + id + "のデータを削除したってばよ！");
+        System.out.println(LocalDateTime.now() + "に、ID:" + id + "のデータを削除しました。");
 
         return "redirect:/admin/contacts";
     }
