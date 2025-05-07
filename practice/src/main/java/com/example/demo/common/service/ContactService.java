@@ -4,8 +4,8 @@ import java.util.List;
 
 import com.example.demo.admin.data.ContactDataDetailForAdmin;
 import com.example.demo.admin.data.ContactDataForAdmin;
+import com.example.demo.admin.form.UpdateContactForm;
 import com.example.demo.contact.form.ContactForm;
-import com.example.demo.contact.form.UpdateContactForm;
 
 public interface ContactService {
 

@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.example.demo.admin.form.UpdateContactForm;
 import com.example.demo.common.service.ContactService;
-import com.example.demo.contact.form.UpdateContactForm;
 
 import lombok.RequiredArgsConstructor;
 
