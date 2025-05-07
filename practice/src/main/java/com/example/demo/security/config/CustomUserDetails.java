@@ -50,6 +50,7 @@ public class CustomUserDetails implements UserDetails {
         return this.email;
     }
 
+    // 認証の有効状態に関するデフォルト実装
     @Override
     public boolean isAccountNonExpired() {
         return true;
