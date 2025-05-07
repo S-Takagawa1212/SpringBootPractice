@@ -100,7 +100,7 @@
           <tr>
             <td>お問い合わせ種別</td>
             <td>
-              <select name="contactType">
+              <select th:field="*{contactType}">
                 <option th:value="services">
                   サービスに関するお問い合わせ
                 </option>
