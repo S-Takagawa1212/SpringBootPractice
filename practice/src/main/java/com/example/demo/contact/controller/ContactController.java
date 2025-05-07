@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.demo.common.service.ContactService;
-import com.example.demo.contact.form.ContactForm;
+import com.example.demo.contact.form.CreateContactForm;
 
 import lombok.RequiredArgsConstructor;
 
@@ -25,13 +25,13 @@ public class ContactController {
 
     @GetMapping("/contact")
     public String contact(Model model) {
-        model.addAttribute("contactForm", new ContactForm());
+        model.addAttribute("contactForm", new CreateContactForm());
 
         return "contacts/contact";
     }
 
     @PostMapping("/contact")
-    public String contact(@Validated @ModelAttribute ContactForm contactForm, BindingResult result,
+    public String contact(@Validated @ModelAttribute CreateContactForm contactForm, BindingResult result,
             HttpServletRequest request) {
         if (result.hasErrors()) {
             return "contacts/contact";
@@ -49,7 +49,7 @@ public class ContactController {
 
         HttpSession session = request.getSession();
 
-        ContactForm contactForm = (ContactForm) session.getAttribute("contactForm");
+        CreateContactForm contactForm = (CreateContactForm) session.getAttribute("contactForm");
 
         // nullチェックを追加
         if (contactForm == null) {
@@ -68,7 +68,7 @@ public class ContactController {
     public String register(Model model, HttpServletRequest request) {
 
         HttpSession session = request.getSession();
-        ContactForm contactForm = (ContactForm) session.getAttribute("contactForm");
+        CreateContactForm contactForm = (CreateContactForm) session.getAttribute("contactForm");
         contactService.saveContact(contactForm);
 
         return "redirect:/contact/complete";
@@ -84,7 +84,7 @@ public class ContactController {
 
         // modelにcotactFormの内容を保存
         HttpSession session = request.getSession();
-        ContactForm contactForm = (ContactForm) session.getAttribute("contactForm");
+        CreateContactForm contactForm = (CreateContactForm) session.getAttribute("contactForm");
         model.addAttribute("contactForm", contactForm);
 
         // 現在のsessionを無効化する
