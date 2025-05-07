@@ -6,7 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.example.demo.admin.data.AdminUserData;
 import com.example.demo.admin.entity.AdminUser;
-import com.example.demo.admin.form.RegistAdminUserForm;
+import com.example.demo.contact.form.RegistAdminUserForm;
 import com.example.demo.admin.repository.AdminUserRepository;
 
 import lombok.RequiredArgsConstructor;

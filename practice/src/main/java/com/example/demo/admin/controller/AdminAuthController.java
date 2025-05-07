@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.example.demo.admin.form.RegistAdminUserForm;
+import com.example.demo.contact.form.RegistAdminUserForm;
 import com.example.demo.admin.service.AdminUserService;
 
 import lombok.RequiredArgsConstructor;
@@ -30,7 +30,7 @@ public class AdminAuthController {
             BindingResult result,
             Model model) {
 
-        // 　formのバリデーションに引っ掛かったらsignup画面に遷移
+        // formのバリデーションに引っ掛かったらsignup画面に遷移
         if (result.hasErrors()) {
             return "admin/signup";
         }
