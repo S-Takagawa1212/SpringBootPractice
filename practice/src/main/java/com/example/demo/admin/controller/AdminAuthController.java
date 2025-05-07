@@ -48,7 +48,7 @@ public class AdminAuthController {
     }
 
     @PostMapping("/admin/signin")
-    public String signInAdminUser(@Validated @ModelAttribute signInAdminUserForm signAdminUserForm,
+    public String signInAdminUser(@Validated @ModelAttribute signInAdminUserForm signInAdminUserForm,
             BindingResult result, Model model) {
 
         // formのバリデーションに引っ掛かったらsignup画面に遷移
