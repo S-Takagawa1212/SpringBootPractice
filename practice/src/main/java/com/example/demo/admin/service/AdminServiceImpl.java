@@ -56,7 +56,8 @@ public class AdminServiceImpl implements AdminService {
         // idが不正な場合の例外スロー
         Contact resultBeforeDto = optionalResult.orElseThrow(() -> new IllegalArgumentException("idの値が不正です。"));
 
-        //TODO DTO側に@allArgsConstructorと@NoargsConstructorをつけて、インスタンス化する時の引数にgetXXXを渡して記述を簡略化できる
+        // TODO
+        // DTO側に@allArgsConstructorと@NoargsConstructorをつけて、インスタンス化する時の引数にgetXXXを渡して記述を簡略化できる
         ContactDataDetailForAdmin result = new ContactDataDetailForAdmin();
 
         result.setId(resultBeforeDto.getId());
