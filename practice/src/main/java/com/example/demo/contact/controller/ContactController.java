@@ -1,4 +1,4 @@
-package com.example.demo.controller;
+package com.example.demo.contact.controller;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.example.demo.form.ContactForm;
-import com.example.demo.service.ContactService;
+import com.example.demo.common.service.ContactService;
+import com.example.demo.contact.form.ContactForm;
 
 import lombok.RequiredArgsConstructor;
 
@@ -27,14 +27,14 @@ public class ContactController {
     public String contact(Model model) {
         model.addAttribute("contactForm", new ContactForm());
 
-        return "contact";
+        return "contacts/contact";
     }
 
     @PostMapping("/contact")
     public String contact(@Validated @ModelAttribute ContactForm contactForm, BindingResult result,
             HttpServletRequest request) {
         if (result.hasErrors()) {
-            return "contact";
+            return "contacts/contact";
         }
 
         // sessionにcontactaFormオブジェクトをcontactFormというタグで登録。
@@ -61,7 +61,7 @@ public class ContactController {
         // FIXME　本当は以下のコードでセッションを閉じたいが、こうするとなぜかエラーがでる。
         // session.removeAttribute("contactForm");
 
-        return "confirmation";
+        return "contacts/confirmation";
     }
 
     @PostMapping("contact/register")
@@ -90,7 +90,7 @@ public class ContactController {
         // 現在のsessionを無効化する
         session.invalidate();
 
-        return "completion";
+        return "contacts/completion";
     }
 
 }
