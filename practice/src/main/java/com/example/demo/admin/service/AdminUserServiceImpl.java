@@ -7,6 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.example.demo.admin.data.AdminUserData;
 import com.example.demo.admin.entity.AdminUser;
 import com.example.demo.admin.form.RegistAdminUserForm;
+import com.example.demo.admin.form.signInAdminUserForm;
 import com.example.demo.admin.repository.AdminUserRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -54,6 +55,12 @@ public class AdminUserServiceImpl implements AdminUserService {
                 data.getUpdatedAt());
 
         return adminUser;
+    }
+
+    @Override
+    public AdminUser findAdminUserByEmail(signInAdminUserForm signInAdminUserForm) {
+        //
+        return repository.findByEmail(signInAdminUserForm.getEmail());
     }
 
 }
