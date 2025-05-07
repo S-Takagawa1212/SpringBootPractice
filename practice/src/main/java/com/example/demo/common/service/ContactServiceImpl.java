@@ -12,6 +12,7 @@ import com.example.demo.admin.data.ContactDataForAdmin;
 import com.example.demo.common.entity.Contact;
 import com.example.demo.common.repository.ContactRepository;
 import com.example.demo.contact.form.ContactForm;
+import com.example.demo.contact.form.UpdateContactForm;
 
 import lombok.RequiredArgsConstructor;
 
@@ -97,10 +98,10 @@ public class ContactServiceImpl implements ContactService {
     }
 
     @Override
-    public void updateContact(Long id, ContactForm form) {
+    public void updateContact(UpdateContactForm form) {
 
         // 更新用にidの値からデータを1件取得する。
-        Optional<Contact> optionalContact = contactRepository.findById(id);
+        Optional<Contact> optionalContact = contactRepository.findById(form.getId());
 
         // idが不正な場合の例外スロー
         Contact contact = optionalContact.orElseThrow(() -> new IllegalArgumentException("idの値が不正です。"));

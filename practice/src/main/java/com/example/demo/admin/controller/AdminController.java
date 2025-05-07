@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.demo.common.service.ContactService;
-import com.example.demo.contact.form.ContactForm;
+import com.example.demo.contact.form.UpdateContactForm;
 
 import lombok.RequiredArgsConstructor;
 
@@ -48,14 +48,14 @@ public class AdminController {
     }
 
     @PostMapping("admin/contacts/{id}/edit")
-    public String editContact(@ModelAttribute ContactForm form, BindingResult result, @PathVariable Long id) {
+    public String editContact(@ModelAttribute UpdateContactForm form, BindingResult result, @PathVariable Long id) {
 
         if (result.hasErrors()) {
             return "admin/contactsEdit";
         }
 
         // DBのデータを上書きする
-        contactService.updateContact(id, form);
+        contactService.updateContact(form);
 
         // 更新日時をconsoleに出力
         System.out.println(LocalDateTime.now() + "に、ID:" + id + "のデータを上書きしました。");
