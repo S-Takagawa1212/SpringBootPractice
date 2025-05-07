@@ -9,8 +9,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.example.demo.admin.service.AdminService;
-import com.example.demo.contact.form.ContactForm;
+import com.example.demo.common.service.ContactService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -18,12 +17,12 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class AdminController {
 
-    private final AdminService adminService;
+    private final ContactService contactService;
 
     @GetMapping("/admin/contacts")
     public String showContacts(Model model) {
 
-        model.addAttribute("contactDataForAdmin", adminService.getAllContact());
+        model.addAttribute("contactDataForAdmin", contactService.getAllContact());
 
         return "admin/contactList";
     }
@@ -32,7 +31,7 @@ public class AdminController {
     public String showContactsDeteil(@PathVariable("id") Long id, Model model) {
 
         // idをkeyにしてDBから情報を取得して、それをmodelに格納する
-        model.addAttribute("contactDataDetailForAdmin", adminService.getContactById(id));
+        model.addAttribute("contactDataDetailForAdmin", contactService.getContactById(id));
 
         return "admin/contactDetail";
     }
@@ -41,7 +40,7 @@ public class AdminController {
     public String showContactEdit(@PathVariable("id") Long id, Model model) {
 
         // idをkeyにしてDBから情報を取得して、それをmodelに格納する
-        model.addAttribute("contactDataDetailForAdmin", adminService.getContactById(id));
+        model.addAttribute("contactDataDetailForAdmin", contactService.getContactById(id));
 
         return "admin/contactEdit";
     }
@@ -50,7 +49,7 @@ public class AdminController {
     public String editContact(@ModelAttribute ContactForm form, @PathVariable Long id) {
 
         // DBのデータを上書きする
-        adminService.updateContact(id, form);
+        contactService.updateContact(id, form);
 
         // 更新日時をconsoleに出力
         System.out.println(LocalDateTime.now() + "に、ID:" + id + "のデータを上書きしたってばよ！");
@@ -62,7 +61,7 @@ public class AdminController {
     @PostMapping("admin/contacts/{id}/delete")
     public String deleteContact(@PathVariable Long id) {
 
-        adminService.deleteContact(id);
+        contactService.deleteContact(id);
 
         // 削除日時をconsoleに出力
         System.out.println(LocalDateTime.now() + "に、ID:" + id + "のデータを削除したってばよ！");
