@@ -19,13 +19,13 @@
           <tr>
             <td>メールアドレス</td>
             <td>
-              <input type="text" name="email" />
+              <input type="text" name="email" style="width: 350px" />
             </td>
           </tr>
           <tr>
             <td>パスワード</td>
             <td>
-              <input type="text" name="password" />
+              <input type="text" name="password" style="width: 350px" />
             </td>
           </tr>
         </table>
@@ -33,16 +33,24 @@
           <input class="btn btn-primary" type="submit" value="ログイン" />
         </div>
       </form>
-      <input
-        type="hidden"
-        th:name="${_csrf.parameterName}"
-        th:value="${_csrf.token}"
-      />
+      <div class="d-flex justify-content-center align-items-center">
+        <a
+          th:href="@{/admin/signup}"
+          type="button"
+          class="btn btn-outline-primary mt-2"
+          >管理者登録する</a
+        >
+        <input
+          type="hidden"
+          th:name="${_csrf.parameterName}"
+          th:value="${_csrf.token}"
+        />
 
-      <div th:if="${param.error}">
-        <p style="color: red">
-          ログインに失敗しました。メールアドレスまたはパスワードが正しくありません。
-        </p>
+        <div th:if="${param.error}">
+          <p style="color: red">
+            ログインに失敗しました。メールアドレスまたはパスワードが正しくありません。
+          </p>
+        </div>
       </div>
     </div>
   </body>
