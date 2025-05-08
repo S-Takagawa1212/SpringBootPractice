@@ -21,6 +21,11 @@ public class SecurityConfig {
 
         http
                 .authorizeHttpRequests(auth -> auth
+                        .requestMatchers(
+                                "/admin/signin", // ← ログインページは認証不要
+                                "/admin/signup", // ← サインアップページは認証不要
+                                "/css/**", "/js/**", "/images/**")
+                        .permitAll()
                         .requestMatchers("/admin/**").hasRole("ADMIN")
                         .anyRequest().permitAll())
 
