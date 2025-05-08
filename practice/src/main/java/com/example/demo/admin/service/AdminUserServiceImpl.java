@@ -1,15 +1,11 @@
 package com.example.demo.admin.service;
 
-import java.util.Optional;
-
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.example.demo.admin.data.AdminUserData;
 import com.example.demo.admin.entity.AdminUser;
-import com.example.demo.admin.form.signInAdminUserForm;
 import com.example.demo.admin.repository.AdminUserRepository;
 import com.example.demo.contact.form.RegistAdminUserForm;
 
@@ -58,15 +54,6 @@ public class AdminUserServiceImpl implements AdminUserService {
                 data.getUpdatedAt());
 
         return adminUser;
-    }
-
-    @Override
-    public AdminUser findAdminUserByEmail(signInAdminUserForm signInAdminUserForm) {
-
-        Optional<AdminUser> optionalUser = repository.findByEmail(signInAdminUserForm.getEmail());
-        AdminUser user = optionalUser.orElseThrow(() -> new UsernameNotFoundException("このメールアドレスは登録されていません。"));
-
-        return user;
     }
 
 }
