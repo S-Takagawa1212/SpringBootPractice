@@ -8,9 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.example.demo.contact.form.RegistAdminUserForm;
-import com.example.demo.admin.form.signInAdminUserForm;
 import com.example.demo.admin.service.AdminUserService;
+import com.example.demo.contact.form.RegistAdminUserForm;
 
 import lombok.RequiredArgsConstructor;
 
@@ -43,22 +42,8 @@ public class AdminAuthController {
 
     @GetMapping("/admin/signin")
     public String showSignIn(Model model) {
-        // TODO SigninAdminUserFormを実装したらコメントを外す。
-        // model.addAttribute("signinAdminUserForm", new SigninAdminUserForm());
+
         return "admin/signin";
-    }
-
-    @PostMapping("/admin/signin")
-    public String signInAdminUser(@Validated @ModelAttribute signInAdminUserForm signInAdminUserForm,
-            BindingResult result, Model model) {
-
-        // formのバリデーションに引っ掛かったらsignup画面に遷移
-        if (result.hasErrors()) {
-            return "admin/sinin";
-        }
-
-        // TODO 遷移先は後で決定する
-        return "redirect:/admin/contcts";
     }
 
 }
