@@ -25,10 +25,10 @@ public class SecurityConfig {
 
                 .formLogin(form -> form
                         .usernameParameter("email") // emailでログイン認証するのでformのname属性をemailに変更
-                        .loginPage("/login")
-                        .loginProcessingUrl("/contacts")
-                        .defaultSuccessUrl("contacts")
-                        .failureUrl("login?error=true"))
+                        .loginPage("/admin/signin")
+                        .loginProcessingUrl("/login")
+                        .defaultSuccessUrl("/admin/contacts")
+                        .failureUrl("/login?error=true"))
 
                 .userDetailsService(customUserDetailService);
 
