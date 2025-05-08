@@ -34,7 +34,12 @@ public class SecurityConfig {
                         .loginPage("/admin/signin")
                         .loginProcessingUrl("/login")
                         .defaultSuccessUrl("/admin/contacts")
-                        .failureUrl("/login?error=true"))
+                        .failureUrl("/admin/signin?error=true"))
+
+                .logout(logout -> logout
+                        .logoutUrl("/logout")
+                        .logoutSuccessUrl("/admin/signin")
+                        .permitAll())
 
                 .userDetailsService(customUserDetailService);
 
