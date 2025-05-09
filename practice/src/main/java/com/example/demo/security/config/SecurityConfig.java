@@ -24,6 +24,7 @@ public class SecurityConfig {
                         .requestMatchers(
                                 "/admin/signin", // ← ログインページは認証不要
                                 "/admin/signup", // ← サインアップページは認証不要
+                                "/contact/**", // ←お問い合わせ自体は認証不要
                                 "/css/**", "/js/**", "/images/**")
                         .permitAll()
                         .requestMatchers("/admin/**").hasRole("ADMIN")
