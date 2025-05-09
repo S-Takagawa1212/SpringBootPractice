@@ -2,8 +2,12 @@
   th:fragment="logout"
   class="d-flex justify-content-center align-items-center mt-2"
 >
-  <!--TODO/admin/signup　に変更する -->
-  <a th:href="@{/admin/contacts}" class="btn btn-outline-primary"
-    >ログアウト(仮実装なのでadmin/contactsの一覧画面に遷移)</a
-  >
+  <form th:action="@{/logout}" method="post">
+    <input
+      type="hidden"
+      th;name="${_csrf.parameterName}"
+      th:value="${_csrf.token}"
+    />
+    <button type="submit" class="btn btn-outline-primary">ログアウト</button>
+  </form>
 </div>

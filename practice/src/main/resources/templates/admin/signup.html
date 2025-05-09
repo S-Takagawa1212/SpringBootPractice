@@ -56,7 +56,11 @@
           <tr>
             <td>パスワード</td>
             <td>
-              <input type="text" th:field="*{password}" style="width: 350px" />
+              <input
+                type="password"
+                th:field="*{password}"
+                style="width: 350px"
+              />
               <span
                 th:if="${#fields.hasErrors('password')}"
                 th:errors="*{password}"

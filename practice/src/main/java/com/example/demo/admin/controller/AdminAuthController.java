@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.example.demo.contact.form.RegistAdminUserForm;
 import com.example.demo.admin.service.AdminUserService;
+import com.example.demo.contact.form.RegistAdminUserForm;
 
 import lombok.RequiredArgsConstructor;
 
@@ -38,6 +38,12 @@ public class AdminAuthController {
         service.saveAdminUser(registAdminUserForm);
 
         return "redirect:/admin/contacts";
+    }
+
+    @GetMapping("/admin/signin")
+    public String showSignIn(Model model) {
+
+        return "admin/signin";
     }
 
 }
